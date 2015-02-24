@@ -1,11 +1,21 @@
 (function(){ 
+    var filterIsOn = false;
+
     var model = {
-        getTodos: function(){
+        getToDos: function(){
             return [];
+        },
+
+        saveToDos: function(){
+            // implement
+        },
+
+        deleteToDo: function(){
+            // implement
         }
 
-        updateFilter: function(isOn){
-
+        updateFilter: function(switchOn){
+            filterIsOn = switchOn;
         }
     };
 
