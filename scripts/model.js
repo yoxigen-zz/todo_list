@@ -1,20 +1,16 @@
 (function(){ 
     var filterIsOn = false;
-    var listOfToDos = new HashMap();
+    var toDosMap = new HashMap();
 
     var Dictionary ={
        lastUpdateDate : "22-02-2015",
        badWords : ["Fuck","Fuck you","Fucker","Blat"]
     }
 
-    isExplicit : function (toDoText){
-        for each (var item in Dictionary.badWords)
-        {
-            if (toDoText.toLowerCase().indexOf(item.toLowerCase()) > -1)
-                return 1;
-        }
-
-        return 0;
+    function isExplicit (toDoText){
+        return Dictionary.badWords.some(function (item){
+            return toDoText.toLowerCase().indexOf(item.toLowerCase()) > -1
+        });
     }
 
     
@@ -27,7 +23,7 @@
         },
 
         saveToDos: function(){
-            // implement
+            alert(isExplicit("need to eat the diner with Mother Fucker Bitch Blat"));
         },
 
         deleteToDo: function(){
