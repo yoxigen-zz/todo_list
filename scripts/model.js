@@ -1,10 +1,10 @@
 (function(){ 
     var filterIsOn = false;
-    var toDosMap = new HashMap();
+    var toDosMap = new Map();
 
     var Dictionary ={
        lastUpdateDate : "22-02-2015",
-       badWords : ["Fuck","Fuck you","Fucker","Blat"]
+       badWords : ["Fuck","Fucker","Blat"]
     }
 
     function isExplicit (toDoText){
