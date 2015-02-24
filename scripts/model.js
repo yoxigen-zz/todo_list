@@ -31,9 +31,17 @@
 
     var model = {
         getToDos: function(){
-            listOfToDos.forEach(function(key, value){
-                
-            });
+            if(filterIsOn){
+                return toDosMap.values();
+            }
+
+            var returnedToDos = new Array();
+            for(var toDo in toDosMap.values()){
+                if(!toDo.isExplicit){
+                    returnedToDos.add(toDo);
+                }
+            }
+            return returnedToDos;
         },
 
         saveToDos: function(taskText){
@@ -58,8 +66,10 @@
             //alert("the to do id is:"+(id-1)+"text: "+toDosMap.get(id-1).toDo+" date : "+toDosMap.get(id-1).date+" explicit is: "+toDosMap.get(id-1).isExplicit);
         },
 
-        deleteToDo: function(){
-            // implement
+        deleteToDo: function(id){
+            if(toDosMap.has(id)){
+                toDosMap.delete(id);
+            }
         },
 
         updateFilter: function(switchOn){

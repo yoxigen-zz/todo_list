@@ -8,26 +8,45 @@
         // Return a list of all tasks in the local storage (as promise)
         getAllTodos : function() {
 
-            // get string from local storage
-            var objectsString = localStorage.getItem(localStorageKey);
+            // create promise for all data from local storage
+            var promise = new Promise(function(resolve, reject) {
 
-            // deserialize string to list of objects
-            var objectsJson = JSON.parse(objectsString);
+                // get string from local storage
+                var objectsString = localStorage.getItem(localStorageKey);
 
-            // TODO return promise for all data
-            return objectsJson;
+                // deserialize string to list of objects
+                var objectsJson = JSON.parse(objectsString);
+
+                // on success
+                resolve(objectsJson);
+
+            });
+
+            // return promise for all data
+            return promise;
         },
+
+        
 
         // save the list of all tasks in the local storage
         setAllTodos : function(mapOfObjects) {
 
-            // serialize list of objects to string
-            var objectsString = JSON.stringify(mapOfObjects);
+            // create promise for all data from local storage
+            var promise = new Promise(function(resolve, reject) {
 
-            // save string to local storage
-            localStorage.setItem(localStorageKey, objectsString);
+                // serialize list of objects to string
+                var objectsString = JSON.stringify(mapOfObjects);
 
-            // TODO return promise for success/failure
+                // save string to local storage
+                localStorage.setItem(localStorageKey, objectsString);
+
+                // on success
+                resolve();
+
+            });
+
+            // return promise for success/failure
+            return promise;
         }
 
     };
