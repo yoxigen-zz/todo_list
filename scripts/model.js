@@ -17,17 +17,17 @@
 
     var model = {
         getToDos: function(){
-            listOfToDos.forEach(function(key, value){
-                
-            });
+            return toDosMap.values();
         },
 
         saveToDos: function(){
             alert(isExplicit("need to eat the diner with Mother Fucker Bitch Blat"));
         },
 
-        deleteToDo: function(){
-            // implement
+        deleteToDo: function(id){
+            if(toDosMap.has(id)){
+                toDosMap.delete(id);
+            }
         },
 
         updateFilter: function(switchOn){
