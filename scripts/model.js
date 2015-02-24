@@ -12,7 +12,7 @@
 
         deleteToDo: function(){
             // implement
-        }
+        },
 
         updateFilter: function(switchOn){
             filterIsOn = switchOn;
