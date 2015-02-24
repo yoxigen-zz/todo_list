@@ -1,20 +1,20 @@
 (function(){ 
     var filterIsOn = false;
-    var listOfToDos = new HashMap();
+    var toDosMap = new Map();
 
     var model = {
         getToDos: function(){
-            listOfToDos.forEach(function(key, value){
-                
-            });
+            return toDosMap.values();
         },
 
         saveToDos: function(){
             // implement
         },
 
-        deleteToDo: function(){
-            // implement
+        deleteToDo: function(id){
+            if(toDosMap.has(id)){
+                toDosMap.delete(id);
+            }
         },
 
         updateFilter: function(switchOn){
