@@ -17,7 +17,17 @@
 
     var model = {
         getToDos: function(){
-            return toDosMap.values();
+            if(filterIsOn){
+                return toDosMap.values();
+            }
+
+            var returnedToDos = new Array();
+            for(var toDo in toDosMap.values()){
+                if(!toDo.isExplicit){
+                    returnedToDos.add(toDo);
+                }
+            }
+            return returnedToDos;
         },
 
         saveToDos: function(){
