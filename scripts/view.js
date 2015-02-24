@@ -16,8 +16,7 @@
             var container = document.getElementById('toDoList');
             var list = document.createElement('ul');
             // loop array
-            for (i = 0; i < toDos.length; i++) {
-                var toDoObject = toDos[i];
+            for (var toDoObject of toDos) {
                 // create li element
                     var record = document.createElement('li');
                     var toDoContent = document.createElement('div');
