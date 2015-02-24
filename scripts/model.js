@@ -1,5 +1,6 @@
 (function(){ 
     var filterIsOn = false;
+    var listOfToDos = new HashMap();
 
     var Dictionary ={
        lastUpdateDate : "22-02-2015",
@@ -20,7 +21,9 @@
 
     var model = {
         getToDos: function(){
-            return [];
+            listOfToDos.forEach(function(key, value){
+                
+            });
         },
 
         saveToDos: function(){
