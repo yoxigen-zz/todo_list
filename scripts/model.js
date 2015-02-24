@@ -4,7 +4,7 @@
     var filterIsOn = false;
 
     //The HashMap of the todos
-    var toDosMap = new Map();
+    var toDosMap = {};
 
     //The id of the todos
     var id =1;
@@ -32,7 +32,7 @@
     var model = {
         getToDos: function(){
             if(filterIsOn){
-                return toDosMap.values();
+                return toDosMap;
             }
 
             var returnedToDos = new Array();
@@ -51,19 +51,20 @@
 
             var toDoInstance = new ToDo(taskText,currentTime,explicitFlag);
             
-            toDosMap.set(id,toDoInstance);
-            
+            toDosMap[id]=toDoInstance;
+             //alert("id is: "+id);
 
-               var p1 = dal.setAllTodos(toDoInstance);
+               var p1 = dal.setAllTodos(toDosMap);
                p1.then(function() {
                                     id++;
                                     console.log("The ToDo task was successfuly persisted"); // "Stuff worked!"
+                                    //alert("id is: "+id);
                 }, function() {
                     toDosMap.get(id);
                     console.log("The ToDo can't be saved please try in a copule of seconds"); // Error: "It broke"
                 });
 
-            //alert("the to do id is:"+(id-1)+"text: "+toDosMap.get(id-1).toDo+" date : "+toDosMap.get(id-1).date+" explicit is: "+toDosMap.get(id-1).isExplicit);
+          
         },
 
         deleteToDo: function(id){
