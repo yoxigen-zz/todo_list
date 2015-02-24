@@ -2,9 +2,17 @@
 
     var view = {
         refreshToDoTable: function(){
-            var toDos = model.getToDos();
+            var p = model.getToDos();
+            p.then(function(toDos) {
+                    view.updateToDoTable(toDos)
+                }, function() {
+                    console.log("Problem getting the ToDo list"); // Error: "It broke"
+                });
 
             // get handle on div
+        },
+
+        updateToDoTable: function(toDos){
             var container = document.getElementById('toDoList');
             var list = document.createElement('ul');
             // loop array
