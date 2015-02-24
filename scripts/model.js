@@ -1,10 +1,19 @@
 (function(){ 
     var filterIsOn = false;
-    var toDosMap = new Map();
+    var toDosMap = getFromStorage();
 
     var Dictionary ={
        lastUpdateDate : "22-02-2015",
        badWords : ["Fuck","Fucker","Blat"]
+    };
+
+    function getFromStorage(){
+        var promise = dal.getAllTodos();
+        return promise.then(function(result) {
+            return result;
+        }, function(err) {
+            console.log(err);
+        });
     }
 
     function isExplicit (toDoText){
@@ -13,21 +22,23 @@
         });
     }
 
-    
-
     var model = {
         getToDos: function(){
-            if(filterIsOn){
-                return toDosMap.values();
+            if(!filterIsOn){
+                return new Promise(function(resolve){
+                    resolve(toDosMap);
+                });
             }
 
-            var returnedToDos = new Array();
-            for(var toDo in toDosMap.values()){
-                if(!toDo.isExplicit){
-                    returnedToDos.add(toDo);
-                }
-            }
-            return returnedToDos;
+            return new Promise(function(resolve){
+                var returnedToDos = new Map();
+                toDosMap.forEach(function(value, key){
+                    if(!value.isExplicit){
+                        returnedToDos.set(key, value);
+                    }
+                });
+                resolve(returnedToDos);
+            });
         },
 
         saveToDos: function(){
