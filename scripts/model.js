@@ -1,6 +1,7 @@
 (function(){ 
     var filterIsOn = false;
     var toDosMap = new Map();
+    var id =1;
 
     var Dictionary ={
        lastUpdateDate : "22-02-2015",
@@ -22,7 +23,10 @@
             });
         },
 
-        saveToDos: function(){
+        saveToDos: function(taskText){
+            var currentTime = new Date().getTime();
+            
+
             alert(isExplicit("need to eat the diner with Mother Fucker Bitch Blat"));
         },
 
