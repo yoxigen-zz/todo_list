@@ -26,7 +26,7 @@
         saveToDos: function(taskText){
             var currentTime = new Date().getTime();
             
-
+            
             alert(isExplicit("need to eat the diner with Mother Fucker Bitch Blat"));
         },
 
