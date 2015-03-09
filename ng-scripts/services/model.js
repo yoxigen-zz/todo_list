@@ -1,10 +1,11 @@
 (function(){
     angular.module("FunTodo").factory("model", model);
 
-    model.$inject = ["DAL"];
+    model.$inject = ["DAL","ToDo"];
 
 
-    function model(DAL){
+
+    function model(DAL,ToDo){
 
         //Will represent if the filter is turn on or off
         var filterIsOn = false;
