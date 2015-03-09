@@ -4,9 +4,6 @@
     var filterIsOn = false;
     var toDosMap = getFromStorage();
 
-    //The HashMap of the todos
-    var toDosMap = {};
-
     //The id of the todos
     var id =1;
 
