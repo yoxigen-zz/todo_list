@@ -9,7 +9,7 @@
 
         //Will represent if the filter is turn on or off
         var filterIsOn = false;
-        var toDosMap = getFromStorage();
+        var toDosList = getFromStorage();
 
         // The id of the toDos
         var id = 1;
@@ -21,7 +21,7 @@
         };
 
         function getFromStorage(){
-            var promise = dal.getAllTodos();
+            var promise = DAL.getAllTodos();
             return promise.then(function(result){
                 return result;
             }, function(err){
@@ -42,18 +42,19 @@
         var modelApi = {
             getToDos : function(){
                 if(!filterIsOn){
-                    return new Promise(function(resolve){
-                        resolve(toDosMap);
-                    });
+                    return toDosList;
                 }
+                
 
                 return new Promise(function(resolve){
                     var retToDos = new Map();
-                    toDosMap.forEach(function(value, key){
-                        if(!value.isExplicit){
-                            retToDos.set(key, value);
-                        }
-                    });
+                    toDosList.then(function(result){
+                                    result.forEach(function(item){
+                                                     if(!item.isExplicit){
+                                                         retToDos.push(item);
+                                                         }
+                                              });
+                                     });
                     resolve(retToDos);
                 });
             },
