@@ -3,7 +3,14 @@
 
     model.$inject = ["DAL"];
 
+
     function model(DAL){
+        var modelApi = {
+
+        }
+
+        return modelApi;
+
 
     }
 })();
