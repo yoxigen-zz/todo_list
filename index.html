@@ -3,14 +3,21 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Fun TODO List</title>
+    <script src="components/angular.min.js"></script>
+    <script src="ng-scripts/FunToDo.js"></script>
+    <script src="ng-scripts/services/dal.js"></script>
+    <script src="ng-scripts/services/model.js"></script>
+    <script src="ng-scripts/controllers/TodoController.js"></script>
 </head>
 <body>
-    <p>
-        <label><input type="checkbox" id="childProof"/> child proof</label>
-    </p>
-    <input type="text" id="newToDoText"/> <button id="saveButton">OK</button>
-    <div id="toDoList"></div>
-
+    <div ng-controller="TodoController">
+        <h1>{{test}}</h1>
+        <p>
+            <label><input type="checkbox" id="childProof"/> child proof</label>
+        </p>
+        <input type="text" id="newToDoText"/> <button id="saveButton">OK</button>
+        <div id="toDoList"></div>
+    </div>
     <script src="scripts/todo.js"></script>
     <script src="scripts/dal.js"></script>
     <script src="scripts/model.js"></script>
