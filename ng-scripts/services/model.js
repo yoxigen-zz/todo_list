@@ -1,9 +1,13 @@
 (function(){
     angular.module("FunTodo").factory("model", model);
-    model.$inject = ["DAL"];
 
-    function model(DAL){
-        // Boolean indicating if explicit words are filtered or not
+    model.$inject = ["DAL","ToDo"];
+
+
+
+    function model(DAL,ToDo){
+
+        //Will represent if the filter is turn on or off
         var filterIsOn = false;
         var toDosMap = getFromStorage();
 

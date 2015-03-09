@@ -1,8 +1,8 @@
 angular.module("FunTodo").factory("DAL", function(){
-    var dalApi = {};
-// Return a list of all tasks in the local storage (as promise)
 
-        var localStorageKey = "Fun!";
+   var localStorageKey = "Fun!";
+   var dalApi = {
+// Return a list of all tasks in the local storage (as promise)
 
         getAllTodos : function() {
 
@@ -47,7 +47,7 @@ angular.module("FunTodo").factory("DAL", function(){
             return promise;
         }
 
-
+};
 
     return dalApi;
 });
