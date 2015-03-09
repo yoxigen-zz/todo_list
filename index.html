@@ -6,21 +6,29 @@
     <script src="components/angular.min.js"></script>
     <script src="ng-scripts/FunToDo.js"></script>
     <script src="ng-scripts/services/dal.js"></script>
+    <script src="ng-scripts/services/ToDo.js"></script>
     <script src="ng-scripts/services/model.js"></script>
     <script src="ng-scripts/controllers/TodoController.js"></script>
 </head>
 <body>
     <div ng-controller="TodoController">
-        <h1>{{test}}</h1>
         <p>
-            <label><input type="checkbox" id="childProof"/> child proof</label>
+            <label><input ng-model="filter" ng-change="updateFilter()" type="checkbox" id="childProof"/> child proof</label>
+
         </p>
-        <input type="text" id="newToDoText"/> <button id="saveButton">OK</button>
-        <div id="toDoList"></div>
+        <input ng-model="newToDo" type="text" id="newToDoText"/> <button  ng-click="addToDo()" id="saveButton">OK</button>
+        <div id="toDoList">
+            <ul>
+                <li ng-repeat="todo in toDoList">
+                    <div>
+                        <span>{{todo.text}}</span>
+                        <small>{{todo.date}}</small>
+                    </div>
+                    <button ng-click="deleteToDo(todo.id)">Delete ToDo</button>
+
+                </li>
+            </ul>
+        </div>
     </div>
-    <script src="scripts/todo.js"></script>
-    <script src="scripts/dal.js"></script>
-    <script src="scripts/model.js"></script>
-    <script src="scripts/view.js"></script>
 </body>
 </html>
